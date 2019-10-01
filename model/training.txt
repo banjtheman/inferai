@@ -1,0 +1,8 @@
+
+#Some cli commands to run
+
+fasttext supervised -input data.train -output infer_ai -lr .05 -epoch 50 -wordNgrams 5
+
+
+#multi label
+fasttext supervised -input data.train -output infer_ai -lr 0.5 -epoch 25 -wordNgrams 2 -bucket 200000 -dim 50 -loss one-vs-all
