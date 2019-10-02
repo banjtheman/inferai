@@ -1,7 +1,10 @@
 import fasttext
 
 #Train model
-model = fasttext.train_supervised(input="data.train", epoch=50, wordNgrams=5, bucket=200000, dim=50, loss='ova')
+#model = fasttext.train_supervised(input="data_full.txt", epoch=50, wordNgrams=5, bucket=200000, dim=50, loss='ova')
+
+model = fasttext.train_supervised(input="data.train", autotuneValidationFile='data.valid', loss='ova')
+
 
 model.save_model("infer_ai.bin")
 
@@ -14,13 +17,17 @@ lines = fo.readlines()
 
 #Run predicts on a file, line by line
 for line in lines:
-    print(line)
+     
+    #print(line)
     try:
         predictions = model.predict(line.strip(), k=-1, threshold=0.5)
     except:
         predictions = []
     
-    print(predictions)
+    if len(line.strip()) < 3:
+        predictions = []
+
+    print(" ######## "+str(predictions)+ "#######"+line)
 
 fo.close()
 
