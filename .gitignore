@@ -7,3 +7,4 @@ data.train
 data.txt
 data.valid
 data_full.txt
+model/u-boot/

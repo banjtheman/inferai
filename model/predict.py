@@ -1,9 +1,9 @@
 import fasttext
 
 #Train model
-#model = fasttext.train_supervised(input="data_full.txt", epoch=50, wordNgrams=5, bucket=200000, dim=50, loss='ova')
+model = fasttext.train_supervised(input="data_full.txt", epoch=50, wordNgrams=5, bucket=200000, dim=50, loss='ova')
 
-model = fasttext.train_supervised(input="data.train", autotuneValidationFile='data.valid', loss='ova')
+#model = fasttext.train_supervised(input="data.train", autotuneValidationFile='data.valid', loss='ova')
 
 
 model.save_model("infer_ai.bin")
